@@ -1,9 +1,14 @@
 library("tidyverse")
 library("devtools")
-library("xml2")
+library("XML")
 
 devtools::session_info()
 
-arrest.data <- read_xml("CPR summary report.xml", encoding = "UTF-8", as_html = FALSE)
+arrest.data <- xmlParse("CPR summary report.xml")
 
-class(arrest.data)
+rootnode <- xmlRoot(arrest.data)
+
+arrest <- xmlToDataFrame("CPR summary report.xml") %>%
+  as_tibble()
+
+View(arrest)
