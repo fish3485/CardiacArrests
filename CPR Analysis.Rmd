@@ -1,7 +1,5 @@
 ---
 title: "CPR Analysis"
-author: "B. Fisher"
-date: "11/11/2016"
 output: html_document
 ---
 
@@ -13,8 +11,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library("tidyverse")
 library("XML")
 ```
-
-## Cursory CPR analysis
 
 Manifesto goes here
 
@@ -35,21 +31,25 @@ shocks <- as.integer(arrest.data$NumberOfShocks)
 ## Data Summary
 
 Compression rate:
-```{r rate, echo = FALSE}
+```{r rate, echo = FALSE, warning = FALSE}
 summary(rate)
+qplot(rate, binwidth = 5)
 ```
 
 Compression ratio:
-```{r ratio, echo = FALSE}
+```{r ratio, echo = FALSE, warning = FALSE}
 summary(ratio)
+qplot(ratio, binwidth = 5)
 ```
 
 Longest pause:
-```{r pauses, echo = FALSE}
+```{r pauses, echo = FALSE, warning = FALSE}
 summary(paused)
+qplot(paused, binwidth = 30)
 ```
 
 Number of Defibrillations:
-```{r shock, echo = FALSE}
+```{r shock, echo = FALSE, warning = FALSE}
 summary(shocks)
+qplot(shocks, binwidth = 1)
 ```
