@@ -1,8 +1,5 @@
-library("tidyverse")
-library("devtools")
+library("readr")
 library("XML")
-
-devtools::session_info()
 
 arrest.data <- xmlParse("CPR summary report.xml") %>%
   xmlToDataFrame()
