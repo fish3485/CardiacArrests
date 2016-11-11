@@ -4,16 +4,7 @@ library("XML")
 
 devtools::session_info()
 
-arrest <- xmlParse("CPR summary report.xml") %>%
-  xmlRoot() %>%
-  xmlToDataFrame() %>%
-  as_tibble()
+arrest.data <- xmlParse("CPR summary report.xml") %>%
+  xmlToDataFrame()
 
-as.numeric(arrest$LongestPause)
-as.numeric(arrest$CompressionDepth)
-as.numeric(arrest$CompressionDepth)
-as.numeric(arrest$NumberOfShocks)
-
-summary(arrest$LongestPause)
-
-View(arrest)
+write_csv(arrest.data, "../Cardiac Arrest Analysis", na = "NA", append = TRUE, col_names = TRUE)
