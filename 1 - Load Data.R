@@ -1,7 +1,7 @@
 library("tidyverse")
 library("XML")
 library("tibble")
-
+#
 arrest.data <- xmlParse("CPR summary report.xml") %>%
   xmlToDataFrame(stringsAsFactors = FALSE) %>%
   as_tibble()
